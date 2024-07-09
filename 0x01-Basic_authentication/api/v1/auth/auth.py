@@ -2,6 +2,7 @@ from flask import request
 from typing import List, TypeVar
 import re
 
+
 class Auth:
     """a class to control authentication for the api
     """
@@ -19,7 +20,3 @@ class Auth:
         """returns the current user
         """
         return None
-
-
-if __name__ == "__main__":
-    pass
