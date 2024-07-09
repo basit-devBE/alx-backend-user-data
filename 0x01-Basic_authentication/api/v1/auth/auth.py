@@ -1,13 +1,10 @@
 from flask import request
 from typing import List, TypeVar
-
+import re
 
 class Auth:
     """a class to control authentication for the api
     """
-    def __init__(self) -> None:
-        pass
-
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """checks if a path requires authentication
         """
