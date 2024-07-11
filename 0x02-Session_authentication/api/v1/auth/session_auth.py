@@ -34,11 +34,16 @@ class SessionAuth(Auth):
         if session_id is None or not isinstance(session_id, str):
             return None
         return self.user_id_by_session_id.get(session_id)
-    
 
     def session_cookie(self, request=None):
         """Returns a cookie value from a request"""
         if request is None:
             return None
         session_name = os.getenv('SESSION_NAME', '_my_session_id')
-        return request.cookies.get(session_name,None)
+        return request.cookies.get(session_name, None)
+
+    def current_user(self, request=None):
+        """Returns a User instance base on a cookie value"""
+        session_id = self.session_cookie(request)
+        user_id = self.user_id_for_session_id(session_id)
+        return User.get(user_id)
