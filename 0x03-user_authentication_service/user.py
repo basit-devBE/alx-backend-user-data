@@ -1,4 +1,5 @@
-#!/user/bin/env python3
+#!/usr/bin/env python3
+
 """The user model's module
 """
 from sqlalchemy import Column, Integer, String
