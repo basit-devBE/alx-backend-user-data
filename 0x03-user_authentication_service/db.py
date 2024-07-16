@@ -44,3 +44,12 @@ class DB:
             self._session.rollback()
             new_user = None
         return new_user
+    
+    def find_user_by(self, email: str) -> User:
+        """Returns the first row that matches the email
+        """
+        try:
+            user = self._session.query(User).filter_by(email=email).one()
+        except NoResultFound:
+            user = None
+        return user
